@@ -1,14 +1,14 @@
 # geolocation
 A python script utilizing geocoding api to search for any location
 
-#Features
+# Features
 
 - Built in API with no usage restrictions 
 - Search for any location
 - Provides accurate longitude and latitude data
 - Saves the reterive json data to a file for later use
 
-#Installation
+# Installation
 
 - Just clone this repository
 ```
