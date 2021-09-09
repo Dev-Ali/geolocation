@@ -67,6 +67,8 @@ while True:
                 print("==== File Not Found ====")
                 continue
         handle.write(json.dumps(js, indent=4))
+        print("[+] Data has been written to the file")
+        sys.exit()
     else:
         for value in js["results"]:
             print("Latitude:", value['geometry']['location']['lat'])
