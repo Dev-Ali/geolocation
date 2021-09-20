@@ -1,5 +1,6 @@
 import sys
 import json
+import os
 from datetime import datetime
 import urllib.request, urllib.parse, urllib.error
 
@@ -41,44 +42,34 @@ while True:
 
     data = connection.read().decode()
     print("[+] Reterived", len(data), "characters")
-    
+
     #Parsing Json Data
     try:
         js = json.loads(data)
     except:
-        print("==== Failure To Parse Json Data")
+        print("==== Failure To Parse Json Data ====")
         sys.exit()
-    
-    ask = input("Do you wish to save the extracted Json data? ")
-    ans = ("yes", "Yes")
+
+    ask = input("Do you wish to save the extracted Json data? ").lower()
+    ans = "yes"
     if ask in ans:
         path = input("Enter the path: ")
-        if "\\" in path:
-            new_path = path.replace("\\", "/")
-            try:
-                handle = open(new_path, "w")
-            except:
-                print("==== File Not Found ====")
-                continue
-        else:
-            try:
-                handle = open(path, "w")
-            except:
-                print("==== File Not Found ====")
-                continue
-        handle.write(json.dumps(js, indent=4))
-        print("[+] Data has been written to the file")
+        # create a path object
+        path = os.path.join(path, 'data.txt')
+
+        try:
+            # open file with context manager
+            with open(path, 'w') as handle:
+                handle.write(json.dumps(js, indent=4))
+            # if an error occurs send useful error message
+        except:
+            print('==== Error occured - make sure path exists ====')
+            continue
+        # print the file that the data was written to
+        print(f"[+] Data has been written to the file: {path}")
         sys.exit()
     else:
         for value in js["results"]:
             print("Latitude:", value['geometry']['location']['lat'])
             print("Longitude:", value['geometry']['location']['lng'])
-
-
-
-
-    
-
-    
-
-    
+        break

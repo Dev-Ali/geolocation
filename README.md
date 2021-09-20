@@ -26,4 +26,4 @@ $ python3 geolocaton.py
 #
 
 - Your contributions are highly appreciated. 
-- Reach out to me on twitter: @am_xali
+- Reach out to me on twitter: [@am_xali](https://twitter.com/am_xhali)
