@@ -65,9 +65,11 @@ while True:
         except:
             print('==== Error occured - make sure path exists ====')
             continue
-        print("[+] Data has been written to the file")
+        # print the file that the data was written to
+        print(f"[+] Data has been written to the file: {path}")
         sys.exit()
     else:
         for value in js["results"]:
             print("Latitude:", value['geometry']['location']['lat'])
             print("Longitude:", value['geometry']['location']['lng'])
+        break
